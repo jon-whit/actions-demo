@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type SomeUndocumentedType struct{}
+
 func main() {
-    fmt.Println("Hello, world!")
+	fmt.Printf("Hello, world!")
 }
