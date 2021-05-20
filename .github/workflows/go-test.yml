@@ -1,0 +1,34 @@
+name: go-test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        go: [1.16]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        with:
+          path: src/github.com/jon-whit/actions-demo
+      
+      - name: Setup Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{matrix.go}}
+
+      - name: Install dependencies
+        run: |
+          go get ./...
+
+      - name: Vet and Lint
+        run: |
+          go vet ./...
+          golint ./...
+
+      - name: Go Test
+        run: |
+          go test ./...          
