@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          go get -d ./...
+          go install ./...
 
       - name: Vet and Lint
         run: |
