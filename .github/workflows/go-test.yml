@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          go get ./...
+          go get -u golang.org/x/lint/golint
 
       - name: Vet and Lint
         run: |
