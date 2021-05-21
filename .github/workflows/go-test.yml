@@ -29,6 +29,8 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/bin
           curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $GITHUB_WORKSPACE/bin/buf
           chmod +x $GITHUB_WORKSPACE/bin/buf
+          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+          
           cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 
       - name: "Go: Vet and Lint"
