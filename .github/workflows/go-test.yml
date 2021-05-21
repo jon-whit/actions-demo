@@ -23,11 +23,10 @@ jobs:
       - name: Setup GOPATH
         run: |
           echo $(go env GOPATH)/bin >> $GITHUB_PATH
-          echo $(go env GOBIN) >> $GITHUB_PATH
 
-      - name: Install dependencies
+      - name: Install Tools
         run: |
-          go mod download
+          cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 
       - name: Vet and Lint
         run: |
