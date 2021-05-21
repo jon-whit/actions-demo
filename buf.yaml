@@ -1,6 +1,9 @@
 version: v1beta1
+name: buf.build/jon-whit/actions-demo
 build:
   roots:
     - api/protos
+deps:
+  - buf.build/beta/googleapis
 breaking:
   ignore_unstable_packages: true

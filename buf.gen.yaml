@@ -1,0 +1,10 @@
+version: v1beta1
+plugins:
+  - name: go
+    out: .
+    opt:
+      - module=github.com/jon-whit/actions-demo
+  - name: go-grpc
+    out: .
+    opt:
+      - module=github.com/jon-whit/actions-demo

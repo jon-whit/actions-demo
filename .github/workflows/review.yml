@@ -1,6 +1,6 @@
-name: go-test
+name: review
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   job1:

@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	pb "github.com/jon-whit/actions-demo/genprotos/bufbuild/demo/v1alpha1"
+)
 
 func main() {
-	fmt.Printf("Hello, world!")
+	var server pb.DemoServiceServer
+	_ = server
 }
