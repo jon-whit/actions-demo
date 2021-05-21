@@ -3,39 +3,46 @@ name: review
 on: [pull_request]
 
 jobs:
-  job1:
-    name: "Go: Vet, Lint, & Test"
-    strategy:
-      matrix:
-        go: [1.16]
-
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
         with:
           path: src/github.com/jon-whit/actions-demo
-      
+
+      - run: make install-tools
+      - run: echo $(go env GOPATH)/bin >> $GITHUB_PATH
+      - run: buf generate
+
+  job1:
+    name: "Go: Vet, Lint, & Test"
+    needs: setup
+    strategy:
+      matrix:
+        go: [1.16]
+
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Go
         uses: actions/setup-go@v1
         with:
           go-version: ${{matrix.go}}
       
-      - name: Setup GOPATH
-        run: |
-          echo $(go env GOPATH)/bin >> $GITHUB_PATH
+      # - name: Setup GOPATH
+      #   run: |
+      #     echo $(go env GOPATH)/bin >> $GITHUB_PATH
 
-      - name: Install Tools
-        run: |
-          mkdir -p $GITHUB_WORKSPACE/bin
-          curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $GITHUB_WORKSPACE/bin/buf
-          chmod +x $GITHUB_WORKSPACE/bin/buf
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
-          cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
+      # - name: Install Tools
+      #   run: |
+      #     mkdir -p $GITHUB_WORKSPACE/bin
+      #     curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $GITHUB_WORKSPACE/bin/buf
+      #     chmod +x $GITHUB_WORKSPACE/bin/buf
+      #     echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+      #     cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 
       - name: "Go: Vet and Lint"
         run: |
-          buf generate
           go vet ./...
           golint -set_exit_status ./...
 
@@ -47,17 +54,17 @@ jobs:
     name: "Buf: Lint & Breaking Changes"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
-        with:
-          path: src/github.com/jon-whit/actions-demo
+      # - name: Checkout code
+      #   uses: actions/checkout@v1
+      #   with:
+      #     path: src/github.com/jon-whit/actions-demo
 
-      - name: Install Buf
-        run: |
-          mkdir -p $GITHUB_WORKSPACE/bin
-          curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $GITHUB_WORKSPACE/bin/buf
-          chmod +x $GITHUB_WORKSPACE/bin/buf
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+      # - name: Install Buf
+      #   run: |
+      #     mkdir -p $GITHUB_WORKSPACE/bin
+      #     curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $GITHUB_WORKSPACE/bin/buf
+      #     chmod +x $GITHUB_WORKSPACE/bin/buf
+      #     echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       - name: "buf lint"
         run: |

@@ -3,6 +3,7 @@ module github.com/jon-whit/actions-demo
 go 1.16
 
 require (
+	github.com/bufbuild/buf v0.42.1 // indirect
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/tools v0.1.1 // indirect
 	google.golang.org/grpc v1.38.0 // indirect
