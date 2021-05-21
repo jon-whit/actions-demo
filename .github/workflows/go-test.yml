@@ -26,6 +26,9 @@ jobs:
 
       - name: Install Tools
         run: |
+          echo "$(uname -s)"
+          echo "$(uname -m)"
+          ls /usr/bin
           curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o /usr/bin/buf
           chmod +x /user/bin/buf
           cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
