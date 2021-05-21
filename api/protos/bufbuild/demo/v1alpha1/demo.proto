@@ -5,13 +5,13 @@ package bufbuild.demo.v1alpha1;
 import "google/protobuf/timestamp.proto";
 
 service DemoService {
-    rpc SayHelloRPC(SayHelloRPCRequest) returns (SayHelloRPCResponse) {}
+    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
 }
 
-message SayHelloRPCRequest {
+message SayHelloRequest {
     
 }
 
-message SayHelloRPCResponse {
+message SayHelloResponse {
 
 }
