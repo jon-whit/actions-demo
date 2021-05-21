@@ -3,7 +3,7 @@ name: go-test
 on: [push, pull_request]
 
 jobs:
-  job1:
+  "my job1":
     strategy:
       matrix:
         go: [1.16]
@@ -37,7 +37,7 @@ jobs:
         run: |
           go test ./...
       
-  job2:
+  "my job2":
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
