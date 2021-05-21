@@ -54,7 +54,9 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/bin/buf
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
-      - name: "Buf: Lint & Breaking Changes"
+      - name: "buf lint"
         run: |
           buf lint
+      - name: "buf breaking"
+        run: |
           buf breaking --against "https://github.com/jon-whit/actions-demo.git#branch=master"
