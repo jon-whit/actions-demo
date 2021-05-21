@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$HOME/.cache/bin"
           curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o "$HOME/.cache/bin/buf"
           chmod +x "$HOME/.cache/bin/buf"
-          export PATH=$HOME/.cache/bin:$PATH
+          export GITHUB_PATH=$HOME/.cache/bin:$GITHUB_PATH
           cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 
       - name: "Go: Vet and Lint"
