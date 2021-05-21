@@ -3,7 +3,7 @@ name: go-test
 on: [push, pull_request]
 
 jobs:
-  "Go Vet, Lint, & Test":
+  job1:
     strategy:
       matrix:
         go: [1.16]
@@ -37,7 +37,7 @@ jobs:
         run: |
           go test ./...
       
-  "Buf Lint & Breaking Changes":
+  job2:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
