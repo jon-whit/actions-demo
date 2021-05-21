@@ -10,7 +10,9 @@ jobs:
         uses: actions/checkout@v1
         with:
           path: src/github.com/jon-whit/actions-demo
-
+      - uses: actions/setup-go@v1
+        with:
+          go-version: ${{matrix.go}}
       - run: make install-tools
       - run: echo $(go env GOPATH)/bin >> $GITHUB_PATH
       - run: buf generate
@@ -24,10 +26,10 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: ${{matrix.go}}
+      # - name: Setup Go
+      #   uses: actions/setup-go@v1
+      #   with:
+      #     go-version: ${{matrix.go}}
       
       # - name: Setup GOPATH
       #   run: |
