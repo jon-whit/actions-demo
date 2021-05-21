@@ -2,3 +2,5 @@ version: v1beta1
 build:
   roots:
     - api/protos
+breaking:
+  ignore_unstable_packages: true
