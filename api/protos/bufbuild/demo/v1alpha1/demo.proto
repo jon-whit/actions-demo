@@ -5,7 +5,7 @@ package bufbuild.demo.v1alpha1;
 import "google/protobuf/timestamp.proto";
 
 service DemoService {
-    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
+    rpc SayHelloRPC(SayHelloRequest) returns (SayHelloResponse) {}
 }
 
 message SayHelloRequest {
