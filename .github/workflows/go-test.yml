@@ -26,11 +26,10 @@ jobs:
 
       - name: Install Tools
         run: |
-          echo "$(uname -s)"
-          echo "$(uname -m)"
-          ls /usr/bin
-          curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o /usr/bin/buf
-          chmod +x /user/bin/buf
+          mkdir -p $(HOME)/.cache/bin
+          curl -sSL "https://github.com/bufbuild/buf/releases/download/v0.41.0/buf-$(uname -s)-$(uname -m)" -o $(HOME)/.cache/bin/buf
+          chmod +x $(HOME)/.cache/bin/buf
+          export PATH = $(abspath $(HOME)/.cache/bin):$PATH
           cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 
       - name: "Go: Vet and Lint"
