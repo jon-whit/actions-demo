@@ -39,7 +39,7 @@ jobs:
           go test ./...
       
   job2:
-    name: Buf: Lint & Breaking Changes
+    name: "Buf: Lint & Breaking Changes"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
