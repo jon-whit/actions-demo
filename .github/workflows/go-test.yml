@@ -1,9 +1,9 @@
 name: go-test
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
-  "Go: Vet, Lint, & Test":
+  "Go Vet, Lint, & Test":
     strategy:
       matrix:
         go: [1.16]
@@ -37,7 +37,7 @@ jobs:
         run: |
           go test ./...
       
-  "Buf: Lint & Breaking Changes":
+  "Buf Lint & Breaking Changes":
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
