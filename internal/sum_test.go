@@ -11,3 +11,11 @@ func TestSum(t *testing.T) {
 		t.Errorf("Expected 3, but got %d", s)
 	}
 }
+
+func TestAvg(t *testing.T) {
+
+	avg := Avg(2, 2)
+	if avg != 2 {
+		t.Errorf("Expected 2, but got %d", avg)
+	}
+}
