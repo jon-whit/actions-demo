@@ -24,9 +24,12 @@ jobs:
           go vet ./...
           golint -set_exit_status ./...
 
-      - name: "Go: Test"
+      - name: "Go: Test Coverage"
         run: |
-          go test ./...
+          go test -race -coverprofile=coverage.txt -covermode=atomic ./...
+
+      - name: Upload coverage to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
       
   job2:
     name: "Buf: Lint & Breaking Changes"
