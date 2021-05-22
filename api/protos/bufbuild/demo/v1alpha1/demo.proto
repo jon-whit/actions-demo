@@ -4,14 +4,16 @@ package bufbuild.demo.v1alpha1;
 
 import "google/protobuf/timestamp.proto";
 
+option go_package = "github.com/jon-whit/actions-demo/genprotos/bufbuild/demo/v1alpha1;demo";
+
 service DemoService {
-    rpc SayHelloRPC(SayHelloRPCRequest) returns (SayHelloRPCResponse) {}
+    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {}
 }
 
-message SayHelloRPCRequest {
+message SayHelloRequest {
     
 }
 
-message SayHelloRPCResponse {
+message SayHelloResponse {
 
 }
