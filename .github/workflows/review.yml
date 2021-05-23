@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   job1:
     name: "Go: Vet, Check, & Test"
-    services:
-      docker:
-        image: docker
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
