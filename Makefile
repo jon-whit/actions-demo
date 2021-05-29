@@ -36,7 +36,7 @@ test-coverage: generate
 	@go test -v -race -coverprofile=coverage.out ./...
 
 .PHONY: check
-check: check-fmt check-lint
+check: check-vet check-lint
 
 .PHONY: check-vet
 check-vet:
