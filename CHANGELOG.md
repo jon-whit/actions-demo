@@ -6,9 +6,13 @@ to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## 0.0.8 2020-06-12
+This is some release text for the `v0.0.8` release.
+
 ## 0.0.7 2020-06-12
 This is some release text for the `v0.0.7` release.
 
-[Unreleased]: https://github.com/jon-whit/actions-demo/compare/v0.0.7...HEAD
+[Unreleased]: https://github.com/jon-whit/actions-demo/compare/v0.0.8...HEAD
+[0.0.8]: https://github.com/jon-whit/actions-demo/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/jon-whit/actions-demo/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/jon-whit/actions-demo/compare/v0.0.5...v0.0.6
