@@ -29,7 +29,6 @@ jobs:
           export NOTES=$(mktemp)
           echo ::set-output name=notes::$NOTES
           printf '${{ steps.changelog_reader.outputs.changes }}' > $NOTES
-          cat $NOTES
         shell: bash
       - name: Set up Go
         uses: actions/setup-go@v2
