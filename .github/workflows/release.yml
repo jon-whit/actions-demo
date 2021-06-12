@@ -44,6 +44,6 @@ jobs:
         with:
           distribution: goreleaser
           version: latest
-          args: release --rm-dist
+          args: release --rm-dist --release-notes <(echo ${{ steps.changelog_reader.outputs.changes }})
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
