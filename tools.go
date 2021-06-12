@@ -3,7 +3,7 @@
 package main
 
 import (
-	_ "golang.org/x/lint/golint"
+	_ "honnef.co/go/tools/cmd/staticcheck"
 	_ "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go"
 	_ "github.com/bufbuild/buf/cmd/buf"

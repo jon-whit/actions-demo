@@ -1,0 +1,39 @@
+project_name: actions-demo
+
+before:
+  hooks:
+    - make generate
+builds:
+  - main: ./cmd/actions-demo/main.go
+    binary: bin/actions-demo
+    env:
+      - CGO_ENABLED=0
+    goarch:
+      - amd64
+    goos:
+      - linux
+      - darwin
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      386: i386
+      amd64: x86_64
+dockers:
+  -
+    image_templates:
+    - "jon-whit/actions-demo:{{ .Tag }}"
+    - "jon-whit/actions-demo:v{{ .Major }}"
+    - "jon-whit/actions-demo:v{{ .Major }}.{{ .Minor }}"
+    - "jon-whit/actions-demo:latest"
+    - "gcr.io/jon-whit/actions-demo"
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
