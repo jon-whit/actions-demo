@@ -32,6 +32,7 @@ checksum:
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
+  skip: false
   sort: asc
   filters:
     exclude:
