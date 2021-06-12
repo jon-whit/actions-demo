@@ -3,16 +3,27 @@ name: release
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
+      - name: Extract version from tag
+        id: tag_name
+        run: |
+          echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        shell: bash
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          validation_depth: 0
+          version: ${{ steps.tag_name.outputs.current_version }}
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
