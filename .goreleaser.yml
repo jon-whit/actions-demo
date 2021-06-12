@@ -22,11 +22,11 @@ archives:
 dockers:
   -
     image_templates:
-    - "jon-whit/actions-demo:{{ .Tag }}"
-    - "jon-whit/actions-demo:v{{ .Major }}"
-    - "jon-whit/actions-demo:v{{ .Major }}.{{ .Minor }}"
-    - "jon-whit/actions-demo:latest"
-    - "gcr.io/jon-whit/actions-demo"
+    - "jonwhit/actions-demo:{{ .Tag }}"
+    - "jonwhit/actions-demo:v{{ .Major }}"
+    - "jonwhit/actions-demo:v{{ .Major }}.{{ .Minor }}"
+    - "jonwhit/actions-demo:latest"
+    #- "gcr.io/jon-whit/actions-demo"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
