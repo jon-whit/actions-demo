@@ -26,7 +26,7 @@ dockers:
     - "jonwhit/actions-demo:v{{ .Major }}"
     - "jonwhit/actions-demo:v{{ .Major }}.{{ .Minor }}"
     - "jonwhit/actions-demo:latest"
-    #- "gcr.io/jon-whit/actions-demo"
+    - "gcr.io/jon-whit/actions-demo"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
