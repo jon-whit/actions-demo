@@ -42,7 +42,7 @@ jobs:
         id: release_notes
         run: |
           echo ::set-output name=changes::$(mktemp)
-          echo '${{ steps.changelog_reader.outputs.changes }}' > ${{ steps.release_notes.outputs.changes }}
+          echo -e '${{ steps.changelog_reader.outputs.changes }}' > ${{ steps.release_notes.outputs.changes }}
         shell: bash
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
